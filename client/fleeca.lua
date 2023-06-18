@@ -352,9 +352,13 @@ RegisterNetEvent('qb-bankrobbery:client:robberyCall', function(type, coords)
     local PlayerJob = QBCore.Functions.GetPlayerData().job
     if PlayerJob.name ~= "police" or not PlayerJob.onduty then return end
     if type == "small" then
+        --[[
         PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
         Config.OnPoliceAlert(Lang:t("general.fleeca_robbery_alert"))
+        --]]
+        exports['ps-dispatch']:FleecaBankRobbery(camId)    -- Vitto
     elseif type == "paleto" then
+        --[[
         PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
         Wait(100)
         PlaySoundFrontend( -1, "Beep_Red", "DLC_HEIST_HACKING_SNAKE_SOUNDS", 1 )
@@ -363,7 +367,10 @@ RegisterNetEvent('qb-bankrobbery:client:robberyCall', function(type, coords)
         Wait(100)
         PlaySoundFrontend( -1, "Beep_Red", "DLC_HEIST_HACKING_SNAKE_SOUNDS", 1 )
         Config.OnPoliceAlert(Lang:t("general.paleto_robbery_alert"))
+        --]]
+        exports['ps-dispatch']:PaletoBankRobbery(camId)    -- Vitto
     elseif type == "pacific" then
+        --[[
         PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
         Wait(100)
         PlaySoundFrontend( -1, "Beep_Red", "DLC_HEIST_HACKING_SNAKE_SOUNDS", 1 )
@@ -372,6 +379,8 @@ RegisterNetEvent('qb-bankrobbery:client:robberyCall', function(type, coords)
         Wait(100)
         PlaySoundFrontend( -1, "Beep_Red", "DLC_HEIST_HACKING_SNAKE_SOUNDS", 1 )
         Config.OnPoliceAlert(Lang:t("general.pacific_robbery_alert"))
+        --]]
+        exports['ps-dispatch']:PacificBankRobbery(camId)    -- Vitto
     end
     local transG = 250
     local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
